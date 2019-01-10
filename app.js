@@ -17,6 +17,7 @@ var deck = [
   "fa-bomb"
 ];
 
+//Setting Global Variables
 var open = [];
 var matches = 0;
 var numMoves = 0;
@@ -76,12 +77,12 @@ function updateCards() {
   });
 }
 
-// Toggles win popup on
+// Function that displays the winner popup
 function showPopup() {
   popup.css("display", "block");
 }
 
-// Removes last start from remaining stars
+// Function that removes stars based on game play
 function removeStar() {
   $(".fa-star")
     .last()
@@ -129,7 +130,7 @@ function gameCompleted() {
   }
 }
 
-// Sets currently open cards to the match state, checks win condition
+// Sets currently open cards to the match state, checks win condition. When win condition is true, triggers function showPopup
 var setMatch = function() {
   open.forEach(function(card) {
     card.addClass("match");
@@ -161,7 +162,7 @@ function openCard(card) {
   }
 }
 
-// Resets all game state variables and resets all required HTML to default state
+// Resets all game variables
 var resetGame = function() {
   open = [];
   matches = 0;
@@ -173,7 +174,7 @@ var resetGame = function() {
   resetStars();
 };
 
-// Handles primary game logic of game
+// Handles primary game logic
 var onClick = function() {
   if(timer.seconds == 0 && timer.minutes == 0){
     resetTimer();
@@ -217,8 +218,7 @@ function shuffle(array) {
 
   return array;
 }
-
-/* Initalize event listeners */
+// Event listeners
 
 $(".card").click(onClick);
 $(".restart").click(resetGame);
